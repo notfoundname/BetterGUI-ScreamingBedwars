@@ -2,6 +2,6 @@
 An BetterGUI addon to support ScreamingBedwars
 
 Possible commands:
-- join: <arena name>
+- join: arena_name
 - leave
 - auto-join
