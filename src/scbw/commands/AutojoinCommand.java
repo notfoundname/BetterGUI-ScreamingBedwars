@@ -19,11 +19,13 @@ public class AutojoinCommand extends Command {
 	}
 	public void autoJoin(Player player) {
 		if (Main.isPlayerInGame(player)) {
-            player.sendMessage(ChatColor.RED + "You are already playing a game!");
+            		player.sendMessage(ChatColor.RED + "You are already playing a game!");
+			return;
         }
         Game game = Main.getInstance().getFirstWaitingGame();
         if (game == null) {
             player.sendMessage(ChatColor.RED + "There is no empty game.");
+		return;
         } else {
             game.joinToGame(player);
         }
