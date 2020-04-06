@@ -20,12 +20,14 @@ public class JoinCommand extends Command {
 	
 	public void joinGame(Player p, String gameName) {
 		if (Main.isPlayerInGame(p)) {
-            p.sendMessage(ChatColor.RED + "You are already playing some game!");
+            	p.sendMessage(ChatColor.RED + "You are already playing some game!");
+		return;
         }
         if (Main.isGameExists(gameName)) {
         	Main.getGame(gameName).joinToGame(p);
         } else {
             p.sendMessage(ChatColor.RED + "Game does not exist!");
+	    return;
         }
     }
 }
