@@ -7,7 +7,7 @@ import org.screamingsandals.bedwars.api.game.Game;
 import me.hsgamer.bettergui.lib.taskchain.TaskChain;
 import me.hsgamer.bettergui.object.Command;
 
-public class AutojoinCommand extends Command {
+public class AutojoinCommand extends Command{
 
 	public AutojoinCommand(String string) {
 		super(string);
@@ -16,18 +16,22 @@ public class AutojoinCommand extends Command {
 	@Override
 	public void addToTaskChain(Player player, TaskChain<?> taskChain) {
 		taskChain.sync(() -> autoJoin(player));
+		
 	}
 	public void autoJoin(Player player) {
 		if (Main.isPlayerInGame(player)) {
-            		player.sendMessage(ChatColor.RED + "You are already playing a game!");
-			return;
+            player.sendMessage(ChatColor.RED + "You are already playing a game!");
+            return;
         }
+		
         Game game = Main.getInstance().getFirstWaitingGame();
+        
         if (game == null) {
-            player.sendMessage(ChatColor.RED + "There is no empty game.");
-		return;
+            player.sendMessage(ChatColor.RED + "There are no empty games.");
+            return;
         } else {
             game.joinToGame(player);
         }
 	}
+
 }
