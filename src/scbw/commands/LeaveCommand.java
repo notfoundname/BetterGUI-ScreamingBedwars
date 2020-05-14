@@ -1,8 +1,8 @@
 package scbw.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.screamingsandals.bedwars.Main;
+import org.screamingsandals.bedwars.lib.lang.I18n;
 import me.hsgamer.bettergui.lib.taskchain.TaskChain;
 import me.hsgamer.bettergui.object.Command;
 
@@ -13,15 +13,15 @@ public class LeaveCommand extends Command {
 	}
 
 	@Override
-	public void addToTaskChain(Player player, TaskChain<?> taskChain) {
-    taskChain.sync(() -> leaveGame(player));
-	}
-	
-	public void leaveGame(Player p) {
-		if (Main.isPlayerInGame(p)) {
-            Main.getPlayerGameProfile(p).changeGame(null);
-        } else {
-            p.sendMessage(ChatColor.RED + "You are not playing any game!");
-        }
+	public void addToTaskChain(Player player, TaskChain<?> taskChain)
+	{
+		taskChain.sync(() -> {
+			if (Main.isPlayerInGame(player)) {
+	            Main.getPlayerGameProfile(player).changeGame(null);
+	        } else {
+	        	player.sendMessage(I18n.i18nonly("prefix") + " " + I18n.i18n("you_are_not_in_game_yet"));
+	        	return;
+	        }	
+		});
 	}
 }
