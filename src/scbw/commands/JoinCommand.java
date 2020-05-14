@@ -18,16 +18,18 @@ public class JoinCommand extends Command {
 		taskChain.sync(() -> joinGame(player, parsed));
 	}
 	
-	public void joinGame(Player p, String gameName) {
-		if (Main.isPlayerInGame(p)) {
-            	p.sendMessage(ChatColor.RED + "You are already playing some game!");
-		return;
+	public void joinGame(Player p, String gameName)
+	{
+		if (Main.isPlayerInGame(p)){
+            p.sendMessage(ChatColor.RED + "You are already in game!");
+            return;
         }
-        if (Main.isGameExists(gameName)) {
+        if (Main.isGameExists(gameName)){
         	Main.getGame(gameName).joinToGame(p);
+        	return;
         } else {
             p.sendMessage(ChatColor.RED + "Game does not exist!");
-	    return;
+            return;
         }
     }
 }
