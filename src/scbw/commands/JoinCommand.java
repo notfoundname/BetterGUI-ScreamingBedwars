@@ -1,8 +1,9 @@
 package scbw.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.screamingsandals.bedwars.Main;
+import org.screamingsandals.bedwars.api.game.GameStatus;
+import org.screamingsandals.bedwars.lib.lang.I18n;
 import me.hsgamer.bettergui.lib.taskchain.TaskChain;
 import me.hsgamer.bettergui.object.Command;
 
@@ -15,22 +16,23 @@ public class JoinCommand extends Command {
 	@Override
 	public void addToTaskChain(Player player, TaskChain<?> taskChain) {
 		String parsed = getParsedCommand(player);
-		taskChain.sync(() -> joinGame(player, parsed));
+		taskChain.sync(() ->  {
+			if (Main.isPlayerInGame(player)){
+	            player.sendMessage(I18n.i18nonly("prefix") + " " + I18n.i18n("you_are_already_in_some_game"));
+	            return;
+	        }
+	        if (Main.isGameExists(parsed)){
+	        	if(!Main.getGame(parsed).getOriginalOrInheritedSpectatorJoin() && Main.getGame(parsed).getStatus() == GameStatus.RUNNING) {
+	        		player.sendMessage(I18n.i18nonly("prefix") + " " + I18n.i18n("game_already_running"));
+	        		return;
+	        	}
+	        	Main.getGame(parsed).joinToGame(player);
+	        	return;
+	        } else {
+	        	player.sendMessage(I18n.i18nonly("prefix") + " " + I18n.i18n("no_arena_found"));
+	            return;
+	        }
+		});
 	}
-	
-	public void joinGame(Player p, String gameName)
-	{
-		if (Main.isPlayerInGame(p)){
-            p.sendMessage(ChatColor.RED + "You are already in game!");
-            return;
-        }
-        if (Main.isGameExists(gameName)){
-        	Main.getGame(gameName).joinToGame(p);
-        	return;
-        } else {
-            p.sendMessage(ChatColor.RED + "Game does not exist!");
-            return;
-        }
-    }
 }
 
