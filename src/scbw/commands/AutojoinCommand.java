@@ -1,13 +1,13 @@
 package scbw.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.screamingsandals.bedwars.Main;
 import org.screamingsandals.bedwars.api.game.Game;
+import org.screamingsandals.bedwars.lib.lang.I18n;
 import me.hsgamer.bettergui.lib.taskchain.TaskChain;
 import me.hsgamer.bettergui.object.Command;
 
-public class AutojoinCommand extends Command{
+public class AutojoinCommand extends Command {
 
 	public AutojoinCommand(String string) {
 		super(string);
@@ -15,23 +15,22 @@ public class AutojoinCommand extends Command{
 
 	@Override
 	public void addToTaskChain(Player player, TaskChain<?> taskChain) {
-		taskChain.sync(() -> autoJoin(player));
+		taskChain.sync(() -> {
+			if (Main.isPlayerInGame(player)) {
+				player.sendMessage(I18n.i18nonly("prefix") + " " + I18n.i18n("you_are_already_in_some_game"));
+	            return;
+	        }
+			
+	        Game game = Main.getInstance().getFirstWaitingGame();
+	        
+	        if (game == null) {
+	        	player.sendMessage(I18n.i18nonly("prefix") + " " + I18n.i18n("there_is_no_empty_game"));
+	            return;
+	        } else {
+	            game.joinToGame(player);
+	        }
+		});
 		
-	}
-	public void autoJoin(Player player) {
-		if (Main.isPlayerInGame(player)) {
-            player.sendMessage(ChatColor.RED + "You are already playing a game!");
-            return;
-        }
-		
-        Game game = Main.getInstance().getFirstWaitingGame();
-        
-        if (game == null) {
-            player.sendMessage(ChatColor.RED + "There are no empty games.");
-            return;
-        } else {
-            game.joinToGame(player);
-        }
 	}
 
 }
