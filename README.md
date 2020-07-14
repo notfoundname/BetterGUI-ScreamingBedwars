@@ -1,10 +1,11 @@
 # SCBW-BGUI-addon
-BetterGUI addon to support ScreamingBedwars
+BetterGUI addon to support ScreamingBedwars<br/>
 
-Possible commands:
-- `join: arena_name`
-- `leave`
-- `auto-join`
+Available commands:
+> `bedwars-join: <arena>`<br/>
+> `bedwars-leave`<br/>
+> `bedwars-auto-join`<br/>
+> `bedwars-rejoin`<br/>
 
-Possible properties:
-- `color: true/false` Change item's color
+Possible properties:<br/>
+> `bedwars-apply-color-by-team: true/false` Change item's color<br/>
