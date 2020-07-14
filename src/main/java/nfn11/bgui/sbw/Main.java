@@ -6,6 +6,7 @@ import me.hsgamer.bettergui.object.addon.Addon;
 import nfn11.bgui.sbw.commands.AutojoinCommand;
 import nfn11.bgui.sbw.commands.JoinCommand;
 import nfn11.bgui.sbw.commands.LeaveCommand;
+import nfn11.bgui.sbw.commands.RejoinCommand;
 import nfn11.bgui.sbw.icon.ColorProperty;
 
 public class Main extends Addon {
@@ -14,6 +15,7 @@ public class Main extends Addon {
 		CommandBuilder.register("bedwars-leave", LeaveCommand.class);
 		CommandBuilder.register("bedwars-join:", JoinCommand.class);
 		CommandBuilder.register("bedwars-auto-join", AutojoinCommand.class);
+		CommandBuilder.register("bedwars-rejoin", RejoinCommand.class);
 		PropertyBuilder.registerItemProperty("bedwars-apply-color-by-team", ColorProperty.class);
 	}
 }
