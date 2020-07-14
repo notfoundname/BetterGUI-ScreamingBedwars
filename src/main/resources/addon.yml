@@ -1,6 +1,6 @@
 name: SCBW-BGUI-addon
 version: 1.0
-main: scbw.main.Main
+main: nfn11.bgui.sbw.Main
 description: Addon with some features
 authors: notfoundname, ScreamingSandals, HSGamer
 plugin-depend: [BedWars]
