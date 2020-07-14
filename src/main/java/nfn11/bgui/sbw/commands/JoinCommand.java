@@ -7,6 +7,7 @@ import me.hsgamer.bettergui.lib.taskchain.TaskChain;
 import me.hsgamer.bettergui.object.Command;
 
 public class JoinCommand extends Command {
+	
 	public JoinCommand(String string) {
 		super(string);
 	}

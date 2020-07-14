@@ -8,13 +8,14 @@ import me.hsgamer.bettergui.lib.taskchain.TaskChain;
 import me.hsgamer.bettergui.object.Command;
 
 public class LeaveCommand extends Command {
+
 	public LeaveCommand(String string) {
 		super(string);
 	}
 
 	@Override
 	public void addToTaskChain(Player player, TaskChain<?> taskChain) {
-		taskChain.sync(() -> {
+		taskChain.async(() -> {
 			if (Main.isPlayerInGame(player)) {
 				Main.getPlayerGameProfile(player).changeGame(null);
 			} else {

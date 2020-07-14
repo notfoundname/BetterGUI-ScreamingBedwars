@@ -9,6 +9,7 @@ import me.hsgamer.bettergui.lib.taskchain.TaskChain;
 import me.hsgamer.bettergui.object.Command;
 
 public class AutojoinCommand extends Command {
+	
 	public AutojoinCommand(String string) {
 		super(string);
 	}

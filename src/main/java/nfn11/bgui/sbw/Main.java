@@ -10,6 +10,7 @@ import nfn11.bgui.sbw.commands.RejoinCommand;
 import nfn11.bgui.sbw.icon.ColorProperty;
 
 public class Main extends Addon {
+	
 	@Override
 	public void onEnable() {
 		CommandBuilder.register("bedwars-leave", LeaveCommand.class);

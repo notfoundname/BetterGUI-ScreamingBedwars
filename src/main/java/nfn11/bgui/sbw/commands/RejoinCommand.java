@@ -20,7 +20,6 @@ public class RejoinCommand extends Command {
 				player.sendMessage(i18n("you_are_already_in_some_game"));
 				return;
 			}
-
 			String name = null;
 			if (Main.isPlayerGameProfileRegistered(player)) {
 				name = Main.getPlayerGameProfile(player).getLatestGameName();

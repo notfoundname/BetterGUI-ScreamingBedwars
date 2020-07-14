@@ -14,7 +14,7 @@ public class ColorProperty extends ItemProperty<Boolean, Boolean> {
 	}
 
 	@Override
-	public boolean compareWithItemStack(Player p, ItemStack is) {
+	public boolean compareWithItemStack(Player player, ItemStack itemstack) {
 		return false;
 	}
 
@@ -24,15 +24,14 @@ public class ColorProperty extends ItemProperty<Boolean, Boolean> {
 	}
 
 	@Override
-	public ItemStack parse(Player player, ItemStack is) {
+	public ItemStack parse(Player player, ItemStack itemstack) {
 		if (!Main.isPlayerInGame(player) || Main.getPlayerGameProfile(player).isSpectator)
-			return is;
+			return itemstack;
 
 		if (getParsed(player).equals(Boolean.TRUE)) {
 			TeamColor color = Main.getPlayerGameProfile(player).getGame().getTeamOfPlayer(player).getColor();
-			Main.applyColor(color, is); //lol i didnt know i can just use this
+			Main.applyColor(color, itemstack); // lol i didnt know i can just use this
 		}
-		return is;
+		return itemstack;
 	}
-
 }
