@@ -1,4 +1,4 @@
-# SCBW-BGUI-addon
+# BetterGUI-ScreamingBedwars 
 BetterGUI addon to support ScreamingBedwars<br/>
 
 Available commands:
