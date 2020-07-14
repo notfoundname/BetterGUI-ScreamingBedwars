@@ -1,5 +1,1 @@
-
-sbw/.settings/fr.kazejiyu.discord.rpc.integration.prefs
-*.prefs
-sbw/.classpath
-sbw/.project
+/target/
