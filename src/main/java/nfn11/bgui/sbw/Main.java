@@ -13,10 +13,10 @@ public class Main extends Addon {
 	
 	@Override
 	public void onEnable() {
-		CommandBuilder.register("bedwars-leave", LeaveCommand.class);
-		CommandBuilder.register("bedwars-join:", JoinCommand.class);
-		CommandBuilder.register("bedwars-auto-join", AutojoinCommand.class);
-		CommandBuilder.register("bedwars-rejoin", RejoinCommand.class);
-		PropertyBuilder.registerItemProperty("bedwars-apply-color-by-team", ColorProperty.class);
+		CommandBuilder.register(LeaveCommand::new, "bedwars-leave");
+		CommandBuilder.register(JoinCommand::new, "bedwars-join:");
+		CommandBuilder.register(AutojoinCommand::new, "bedwars-auto-join");
+		CommandBuilder.register(RejoinCommand::new, "bedwars-rejoin");
+		PropertyBuilder.registerItemProperty(ColorProperty::new, "bedwars-apply-color-by-team");
 	}
 }
